@@ -38,6 +38,18 @@ class LinksController < ApplicationController
     end
   end
 
+  def upvote
+    @link = Link.find(params[:id])
+    @link.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @link = Link.find(params[:id])
+    @link.downvote_by current_user
+    redirect_to :back
+  end
+
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
